@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { cases } from './data/cases';
 
 type PersonDetails = {
   dob: string;
