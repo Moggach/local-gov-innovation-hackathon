@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tooling setup (`npm run dev`, `npm run build`, `npm run lint`, `npm run preview`).
 - Devcontainer provisioning for Codespaces/Dev Containers with Node 20 and Pandoc.
 - Vitest + Testing Library tooling (`package.json`, `vitest.config.ts`, `src/App.test.tsx`, `src/setupTests.ts`).
+- Enforced LF line endings across platforms via `.gitattributes`.
 
 ## [0.1.0] - 2025-11-26
 

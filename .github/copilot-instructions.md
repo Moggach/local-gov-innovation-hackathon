@@ -35,4 +35,5 @@ const [count, setCount] = useState(0)
 - Any new root-level HTML or meta tags should go in `index.html`; Vite injects the build output automatically.
 - If you introduce routing or state management, establish the entry point in `App.tsx` and leave `main.tsx` as the minimal renderer.
 - Namespaces for DOM globals are provided by the ESLint config; avoid adding browser globals manually unless Vite cannot infer them.
+- Line endings are normalized to LF via `.gitattributes`; editors on Windows should keep LF endings to avoid churn.
 - Commit only source files—`dist/` is ignored via `globalIgnores(['dist'])`, so rely on the build step rather than checking in artifacts.
