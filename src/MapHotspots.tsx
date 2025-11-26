@@ -24,7 +24,7 @@ export default function MapHotspots({ hotspots }: MapHotspotsProps) {
   });
 
   return (
-  <MapContainer center={[51.5074, -0.1278] as LatLngExpression} zoom={12} style={{ height: '400px', width: '100%' }}>
+  <MapContainer center={[51.3413, 0.7312] as LatLngExpression} zoom={12} style={{ height: '400px', width: '100%' }}>
       <TileLayer
         attribution='&copy; OpenStreetMap contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
