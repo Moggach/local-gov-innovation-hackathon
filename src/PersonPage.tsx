@@ -5,7 +5,7 @@ import './PersonPage.css';
 const detailsById: Record<number, any> = {
   1: {
     dob: '12/03/1980',
-    address: '123 Example Street, Birmingham',
+    address: '123 Example Street, Sittingbourne',
     contact: 'john.smith@email.com, 07123 456789',
     history: [
       '01/06/2025: Contacted Housing Advice Service',
@@ -16,7 +16,7 @@ const detailsById: Record<number, any> = {
   },
   2: {
     dob: '22/08/1975',
-    address: '45 Example Road, Birmingham',
+    address: '45 Example Road, Faversham',
     contact: 'jane.doe@email.com, 07987 654321',
     history: [
       '10/05/2025: Contacted Council Tax Team',
@@ -26,7 +26,7 @@ const detailsById: Record<number, any> = {
   },
   3: {
     dob: '03/11/1990',
-    address: '78 Example Avenue, Birmingham',
+    address: '78 Example Avenue, Sheerness',
     contact: 'sam.lee@email.com, 07812 345678',
     history: [
       '05/04/2025: Universal Credit application',
@@ -35,13 +35,115 @@ const detailsById: Record<number, any> = {
   },
   4: {
     dob: '30/01/1985',
-    address: '9 Example Close, Birmingham',
+    address: '9 Example Close, Sittingbourne',
     contact: 'alex.green@email.com, 07777 888999',
     history: [
       '12/09/2025: Received Eviction Notice',
       '18/09/2025: Contacted Housing Advice Service',
     ],
     riskFactors: ['Eviction notice', 'Private renter'],
+  },
+  5: {
+    dob: '14/02/1982',
+    address: '22 High Street, Faversham',
+    contact: 'maria.white@email.com, 07111 222333',
+    history: [
+      '03/03/2025: Benefit cap applied',
+      '10/04/2025: Requested hardship payment',
+    ],
+    riskFactors: ['Benefit cap', 'Single parent'],
+  },
+  6: {
+    dob: '09/09/1978',
+    address: '5 Park Lane, Sheerness',
+    contact: 'tom.black@email.com, 07222 333444',
+    history: [
+      '15/05/2025: ASB complaint filed',
+    ],
+    riskFactors: ['ASB complaint', 'Social housing tenant'],
+  },
+  7: {
+    dob: '27/07/1987',
+    address: '33 Mill Road, Sittingbourne',
+    contact: 'lucy.brown@email.com, 07333 444555',
+    history: [
+      '20/06/2025: Reported domestic violence',
+      '25/06/2025: Moved to temporary accommodation',
+    ],
+    riskFactors: ['Domestic violence', 'Family breakdown'],
+  },
+  8: {
+    dob: '18/12/1983',
+    address: '7 Church Street, Faversham',
+    contact: 'peter.gray@email.com, 07444 555666',
+    history: [
+      '01/07/2025: Rent increase notice',
+    ],
+    riskFactors: ['Rent increase', 'Private renter'],
+  },
+  9: {
+    dob: '05/05/1992',
+    address: '19 Queen Street, Sheerness',
+    contact: 'nina.patel@email.com, 07555 666777',
+    history: [
+      '10/08/2025: Council tax reminder sent',
+    ],
+    riskFactors: ['Council tax reminder', 'Young adult'],
+  },
+  10: {
+    dob: '11/11/1980',
+    address: '2 Station Road, Sittingbourne',
+    contact: 'omar.khan@email.com, 07666 777888',
+    history: [
+      '15/09/2025: Received eviction threat',
+      '20/09/2025: Contacted Housing Advice Service',
+    ],
+    riskFactors: ['Eviction threat', 'Private renter'],
+  },
+  11: {
+    dob: '23/03/1986',
+    address: '8 Market Street, Faversham',
+    contact: 'sophie.evans@email.com, 07777 888999',
+    history: [
+      '05/10/2025: Universal Credit sanction',
+    ],
+    riskFactors: ['Universal Credit sanction', 'Single adult household'],
+  },
+  12: {
+    dob: '16/06/1991',
+    address: '14 Bridge Road, Sheerness',
+    contact: 'ben.turner@email.com, 07888 999000',
+    history: [
+      '22/07/2025: Missed rent payment',
+    ],
+    riskFactors: ['Missed rent payment', 'Young adult'],
+  },
+  13: {
+    dob: '29/04/1984',
+    address: '21 Grove Avenue, Sittingbourne',
+    contact: 'chloe.adams@email.com, 07999 000111',
+    history: [
+      '30/08/2025: Family breakdown reported',
+    ],
+    riskFactors: ['Family breakdown', 'Single parent'],
+  },
+  14: {
+    dob: '07/07/1979',
+    address: '3 School Lane, Faversham',
+    contact: 'raj.singh@email.com, 07000 111222',
+    history: [
+      '12/09/2025: Council tax debt letter',
+    ],
+    riskFactors: ['Council tax debt', 'Social housing tenant'],
+  },
+  15: {
+    dob: '25/12/1993',
+    address: '17 Park Avenue, Sheerness',
+    contact: 'ella.king@email.com, 07123 222333',
+    history: [
+      '02/10/2025: Universal Credit delay',
+    ],
+    riskFactors: ['Universal Credit delay', 'Young adult'],
   },
 };
 
