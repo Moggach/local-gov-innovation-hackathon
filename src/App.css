@@ -1,8 +1,115 @@
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2em;
+  padding-right: 2.5em;
+}
+
+.profile-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  cursor: pointer;
+}
+.dashboard {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  background: #f6f8fa;
+  min-height: 100vh;
+  padding: 3em 0 4em 0;
+  letter-spacing: 0.01em;
+  color: #222;
+}
+
+
+.dashboard h1 {
+  font-size: 2.6em;
+  font-weight: 700;
+  color: #1a2a3a;
+  margin-bottom: 2em;
+  text-align: left;
+  padding-left: 2.5em;
+  letter-spacing: 0.02em;
+}
+
+.cases-section, .map-section {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  margin: 2.5em auto;
+  padding: 2.5em 3em;
+  width: 80%;
+  max-width: 1600px;
+}
+
+.cases-section h2, .map-section h2 {
+  font-size: 1.7em;
+  color: #1a2a3a;
+  margin-bottom: 1.2em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.cases-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.2em;
+  background: #f9fafb;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  font-size: 1.08em;
+}
+.cases-table th, .cases-table td {
+  border: none;
+  padding: 1em 1.2em;
+  text-align: left;
+  vertical-align: middle;
+}
+.cases-table th {
+  background: #e9ecef;
+  font-weight: 600;
+  color: #1a2a3a;
+  font-size: 1.1em;
+  letter-spacing: 0.01em;
+}
+.cases-table tr {
+  transition: background 0.18s;
+}
+.cases-table tr:hover {
+  background: #f3f6fa;
+}
+.risk-high {
+  background: #ffeaea;
+  color: #b30000;
+  font-weight: 600;
+}
+.risk-medium {
+  background: #fffbe5;
+  color: #b38f00;
+  font-weight: 500;
+}
+.risk-low {
+  background: #e5ffe5;
+  color: #008f00;
+  font-weight: 500;
+}
+
+.map-section {
+  margin-top: 2.5em;
+}
+.leaflet-container {
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+}
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+  width: 100%;
 }
 
 .logo {
@@ -35,7 +142,6 @@
 
 
 .dashboard {
-  text-align: left;
   padding: 2em;
 }
 
