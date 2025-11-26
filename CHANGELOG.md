@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Backlog to production-grade data integration
+- Replace demo CSVs with live connectors to Housing, Council Tax, and Benefits systems (see `/docs/data-availability.md`).
+- Move from a plain `role` field to signed identity tokens (OIDC/JWT) and enforce authorization in each MCP server.
+- Add per-request correlation IDs; forward MCP logs to a central audit sink with retention/alerting.
+- Ship contract/integration tests against staging data and add them to CI.
+- Surface data freshness and source reference IDs in the UI; drop static fallbacks once MCP reliability SLAs are met.
+- Add redaction/aggregation layer so analysts receive de-identified views by default.
+- Package MCP servers for deployment (containers/K8s) with HTTPS, health probes, and error budgets.
+
+
 
 ## [0.2.0] - 2025-11-26
 

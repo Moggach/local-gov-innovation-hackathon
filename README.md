@@ -1,77 +1,54 @@
-# React + TypeScript + Vite
+# Homelessness Prevention Demonstrator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript front-end backed by three lightweight MCP-style servers that expose deterministic housing, council tax, and benefits data for AI-assisted triage.
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Line endings
-
-This repository enforces LF line endings via `.gitattributes` so files stay consistent between Linux and Windows. If you are on Windows, configure your editor to keep LF endings and disable automatic CRLF conversion.
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Install dependencies (if not already done):
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Run the React app:
+```bash
+npm run dev
 ```
+
+Open the UI at the URL printed in the terminal (typically `http://localhost:5173`).
+
+## MCP demo servers
+
+Start the stub MCP servers in separate terminals:
+```bash
+python mcp_servers/housing_server/server.py --port 7001
+python mcp_servers/council_tax_server/server.py --port 7002
+python mcp_servers/benefits_server/server.py --port 7003
+```
+
+Each server listens on `/mcp` and expects JSON POST requests that include an `action`, parameters (e.g. `uprn`), and a `role` for RBAC checks. See `mcp_servers/README.md` and the per-server READMEs for accepted actions and roles.
+
+Quick smoke test (spins up all three servers and exercises health + sample lookups):
+```bash
+npm run smoke:mcp
+```
+
+## How to demo
+
+- Step-by-step run/demo: `USAGE.md`
+- Storyline using current data: `DEMONSTRATION.md`
+- Architecture & data flow: `docs/architecture.md`
+- RBAC/audit/redaction: `docs/security_and_governance.md`
+- Backlog to production data integration: `CHANGELOG.md` (Unreleased section)
+
+## Architecture & security
+
+- High-level design and data flow: `docs/architecture.md`
+- RBAC, audit, and redaction approach: `docs/security_and_governance.md`
+
+## Developing
+
+- Run tests: `npm test`
+- Build for production: `npm run build`
+- Lint: `npm run lint`
+
+Line endings are enforced as LF via `.gitattributes`; keep your editor configured accordingly.

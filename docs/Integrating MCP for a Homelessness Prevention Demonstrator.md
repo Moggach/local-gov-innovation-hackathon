@@ -83,35 +83,24 @@ AI. All interactions are logged for auditing. This design lets the AI
 access siloed council data through a standard protocol without
 centralizing the databases.
 
+```markdown
 flowchart TD
-
 subgraph Council Data Systems (MCP servers)
-
 direction LR
-
 H\[MCP Server: Housing\] --\>\|DB access\| HDB\[(Housing DB)\]
-
 C\[MCP Server: Council Tax\] --\>\|DB access\| CDB\[(Council Tax DB)\]
-
 B\[MCP Server: Benefits\] --\>\|DB access\| BDB\[(Benefits System)\]
-
 end
 
 User(\[Council Officer\]) --\>\|query\| AI{{AI Assistant (Claude)}}
-
 AI --\>\|MCP request\| H
-
 AI --\>\|MCP request\| C
-
 AI --\>\|MCP request\| B
-
 H --\>\|data\| AI
-
 C --\>\|data\| AI
-
 B --\>\|data\| AI
-
 AI --\>\|insight/response\| User
+```
 
 **Deterministic Data Delivery via MCP to AI Agents**
 
@@ -262,19 +251,16 @@ the following steps and structure:
         (like \~/.codex/mcp_settings.json), add entries similar to the
         following for each server:
 
+```json
     -   {
 
     -   "mcpServers": {
-
     -   "housing": { "command": "housing_mcp_server" },
-
     -   "council_tax": { "command": "council_tax_mcp_server" },
-
     -   "benefits": { "command": "benefits_mcp_server" }
-
     -   }
-
     -   }
+```
 
 > This is analogous to how a mermaid diagram tool was configured for
 > Codex[<u>github.com</u>](https://github.com/veelenga/claude-mermaid#:~:text=Codex).
