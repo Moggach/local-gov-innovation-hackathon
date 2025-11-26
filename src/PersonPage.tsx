@@ -1,10 +1,16 @@
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 
+type PersonDetails = {
+  dob: string;
+  address: string;
+  contact: string;
+  history: string[];
+  riskFactors: string[];
+};
+
 // Dummy details for demo purposes
-import './PersonPage.css';
-import { cases } from './data/cases';
-const detailsById: Record<number, any> = {
+const detailsById: Record<number, PersonDetails> = {
   1: {
     dob: '12/03/1980',
     address: '123 Example Street, Sittingbourne',
