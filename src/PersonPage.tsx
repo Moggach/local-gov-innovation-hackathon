@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 
 // Dummy details for demo purposes
 import './PersonPage.css';
+import { cases } from './data/cases';
 const detailsById: Record<number, any> = {
   1: {
     dob: '12/03/1980',
@@ -150,12 +151,7 @@ const detailsById: Record<number, any> = {
 export default function PersonPage() {
   const { id } = useParams();
   const personId = Number(id);
-  const cases = [
-    { id: 1, reference: 'CASE-001', uprn: '100010001', name: 'John Smith', risk: 'High', details: 'Rent arrears', probability: 90, completeness: 'high' },
-    { id: 2, reference: 'CASE-002', uprn: '100010002', name: 'Jane Doe', risk: 'Medium', details: 'Council tax debt', probability: 60, completeness: 'partial' },
-    { id: 3, reference: 'CASE-003', uprn: '100010003', name: 'Sam Lee', risk: 'Low', details: 'Universal Credit delay', probability: 20, completeness: 'limited' },
-    { id: 4, reference: 'CASE-004', uprn: '100010004', name: 'Alex Green', risk: 'High', details: 'Eviction notice', probability: 80, completeness: 'high' },
-  ];
+  // cases imported from data/cases
   const person = cases.find(c => c.id === personId);
   const details = detailsById[personId];
 

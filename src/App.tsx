@@ -7,25 +7,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-
-
-const cases = [
-  { id: 1, reference: 'CASE-001', uprn: '100010001', name: 'John Smith', risk: 'High', details: 'Rent arrears', probability: 90, completeness: 'high' },
-  { id: 2, reference: 'CASE-002', uprn: '100010002', name: 'Jane Doe', risk: 'Medium', details: 'Council tax debt', probability: 60, completeness: 'partial' },
-  { id: 3, reference: 'CASE-003', uprn: '100010003', name: 'Sam Lee', risk: 'Low', details: 'Universal Credit delay', probability: 20, completeness: 'limited' },
-  { id: 4, reference: 'CASE-004', uprn: '100010004', name: 'Alex Green', risk: 'High', details: 'Eviction notice', probability: 80, completeness: 'high' },
-  { id: 5, reference: 'CASE-005', uprn: '100010005', name: 'Maria White', risk: 'Medium', details: 'Benefit cap', probability: 55, completeness: 'partial' },
-  { id: 6, reference: 'CASE-006', uprn: '100010006', name: 'Tom Black', risk: 'Low', details: 'ASB complaint', probability: 15, completeness: 'limited' },
-  { id: 7, reference: 'CASE-007', uprn: '100010007', name: 'Lucy Brown', risk: 'High', details: 'Domestic violence', probability: 85, completeness: 'high' },
-  { id: 8, reference: 'CASE-008', uprn: '100010008', name: 'Peter Gray', risk: 'Medium', details: 'Rent increase', probability: 50, completeness: 'partial' },
-  { id: 9, reference: 'CASE-009', uprn: '100010009', name: 'Nina Patel', risk: 'Low', details: 'Council tax reminder', probability: 25, completeness: 'limited' },
-  { id: 10, reference: 'CASE-010', uprn: '100010010', name: 'Omar Khan', risk: 'High', details: 'Eviction threat', probability: 92, completeness: 'high' },
-  { id: 11, reference: 'CASE-011', uprn: '100010011', name: 'Sophie Evans', risk: 'Medium', details: 'Universal Credit sanction', probability: 65, completeness: 'partial' },
-  { id: 12, reference: 'CASE-012', uprn: '100010012', name: 'Ben Turner', risk: 'Low', details: 'Missed rent payment', probability: 30, completeness: 'limited' },
-  { id: 13, reference: 'CASE-013', uprn: '100010013', name: 'Chloe Adams', risk: 'High', details: 'Family breakdown', probability: 88, completeness: 'high' },
-  { id: 14, reference: 'CASE-014', uprn: '100010014', name: 'Raj Singh', risk: 'Medium', details: 'Council tax debt', probability: 58, completeness: 'partial' },
-  { id: 15, reference: 'CASE-015', uprn: '100010015', name: 'Ella King', risk: 'Low', details: 'Universal Credit delay', probability: 18, completeness: 'limited' },
-];
+import { cases } from './data/cases';
 
 
 const hotspots = [
