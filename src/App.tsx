@@ -7,23 +7,22 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-
-
-const cases = [
-  { id: 1, name: 'John Smith', risk: 'High', details: 'Rent arrears', probability: 90 },
-  { id: 2, name: 'Jane Doe', risk: 'Medium', details: 'Council tax debt', probability: 60 },
-  { id: 3, name: 'Sam Lee', risk: 'Low', details: 'Universal Credit delay', probability: 20 },
-  { id: 4, name: 'Alex Green', risk: 'High', details: 'Eviction notice', probability: 80 },
-];
+import { cases } from './data/cases';
 
 
 const hotspots = [
-  { id: 1, name: 'Central Park', lat: 51.5074, lng: -0.1278, count: 12 },
-  { id: 2, name: 'East End', lat: 51.515, lng: -0.07, count: 8 },
-  { id: 3, name: 'South Bank', lat: 51.5033, lng: -0.1195, count: 5 },
+  { id: 1, name: 'Sittingbourne', lat: 51.3413, lng: 0.7312, count: 12 },
+  { id: 2, name: 'Swale House', lat: 51.3385, lng: 0.7350, count: 7 }, // moved south-east
+  { id: 3, name: 'Milton Regis', lat: 51.3465, lng: 0.7250, count: 5 }, // moved north-west
+  { id: 4, name: 'Kemsley', lat: 51.3570, lng: 0.7310, count: 4 },
+  { id: 5, name: 'Murston', lat: 51.3390, lng: 0.7430, count: 3 },
 ];
 
+import { useState } from 'react';
+
 function Dashboard() {
+  const [riskFilter, setRiskFilter] = useState('All');
+  const filteredCases = riskFilter === 'All' ? cases : cases.filter(c => c.risk === riskFilter);
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -38,22 +37,52 @@ function Dashboard() {
       </div>
       <section className="cases-section">
         <h2>Cases</h2>
+        <div style={{ marginBottom: '1em' }}>
+          <label htmlFor="risk-filter" style={{ fontWeight: 500, marginRight: '0.7em' }}>Filter by risk:</label>
+          <select
+            id="risk-filter"
+            value={riskFilter}
+            onChange={e => setRiskFilter(e.target.value)}
+            style={{ padding: '0.5em 1em', borderRadius: '6px', fontSize: '1em' }}
+          >
+            <option value="All">All</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
         <table className="cases-table">
           <thead>
             <tr>
+              <th>Case Reference</th>
+              <th>UPRN</th>
               <th>Name</th>
               <th>Risk Status</th>
+              <th>Data Completeness</th>
               <th>Details</th>
               <th>Probability of Homelessness (6mo)</th>
             </tr>
           </thead>
           <tbody>
-            {cases.map((c) => (
+            {filteredCases.map((c) => (
               <tr key={c.id} className={`risk-${c.risk.toLowerCase()}`}>
                 <td>
-                  <Link to={`/person/${c.id}`} className="case-link">{c.name}</Link>
+                  <Link to={`/person/${c.id}`} className="case-link">{c.reference}</Link>
                 </td>
+                <td>{c.uprn}</td>
+                <td>{c.name}</td>
                 <td>{c.risk}</td>
+                <td>
+                  {c.completeness === 'high' && (
+                    <span style={{ fontSize: '1em' }} title="High data completeness">🟢 High data completeness</span>
+                  )}
+                  {c.completeness === 'partial' && (
+                    <span style={{ fontSize: '1em' }} title="Partial data">🟡 Partial data</span>
+                  )}
+                  {c.completeness === 'limited' && (
+                    <span style={{ fontSize: '1em' }} title="Very limited data (CT only)">🔴 Very limited data (CT only)</span>
+                  )}
+                </td>
                 <td>{c.details}</td>
                 <td>{c.probability}%</td>
               </tr>
