@@ -32,7 +32,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <h1>Welcome to your dashboard</h1>
+        <h1>Welcome to your Lighthouse dashboard</h1>
         <div className="profile-icon" title="Profile">
           <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="40" cy="40" r="40" fill="#e9ecef" />
