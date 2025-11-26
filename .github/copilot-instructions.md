@@ -13,7 +13,14 @@
 - Install once with `npm install`; use `npm run dev` for the Vite dev server with HMR.
 - `npm run build` runs `tsc -b` before `vite build`, so fix type errors before expecting a production bundle.
 - `npm run lint` uses the flat config in `eslint.config.js` (ES2020 globals + React Hooks + React Refresh rules).
+- `npm test` executes Vitest in a jsdom environment with Testing Library helpers; use `npm run test:watch` while iterating.
+- Generate coverage via `npm run test:coverage` (Vitest with the V8 coverage provider).
 - Preview the production build locally via `npm run preview` after running the build.
+
+## Changelog Discipline
+- Every user-facing or developer-impacting change must add a bullet to the `[Unreleased]` section of the root `CHANGELOG.md`, grouped under a Keep a Changelog heading such as `### Added` or `### Fixed`.
+- Write concise bullets referencing the affected module or script (e.g., `src/App.tsx` or `npm run build`).
+- When preparing a release, move the curated `Unreleased` items into a dated version section following Semantic Versioning (e.g., `## [0.2.0] - 2025-12-01`).
 
 ## Coding Patterns
 - Author components as plain functions and manage state with hooks; for example:

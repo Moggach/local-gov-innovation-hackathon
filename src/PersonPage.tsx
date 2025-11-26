@@ -1,7 +1,15 @@
 import { Link, useParams } from 'react-router-dom';
 
+type PersonDetails = {
+  dob: string;
+  address: string;
+  contact: string;
+  history: string[];
+  riskFactors: string[];
+};
+
 // Dummy details for demo purposes
-const detailsById: Record<number, any> = {
+const detailsById: Record<number, PersonDetails> = {
   1: {
     dob: '12/03/1980',
     address: '123 Example Street, Birmingham',
