@@ -22,7 +22,13 @@ import { useState } from 'react';
 
 function Dashboard() {
   const [riskFilter, setRiskFilter] = useState('All');
-  const filteredCases = riskFilter === 'All' ? cases : cases.filter(c => c.risk === riskFilter);
+  const [riskOverrides, setRiskOverrides] = useState<Record<number, string>>({});
+  const filteredCases = riskFilter === 'All' ? cases : cases.filter(c => (riskOverrides[c.id] || c.risk) === riskFilter);
+
+  const handleRiskChange = (id: number, value: string) => {
+    setRiskOverrides(prev => ({ ...prev, [id]: value }));
+  };
+
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -65,13 +71,30 @@ function Dashboard() {
           </thead>
           <tbody>
             {filteredCases.map((c) => (
-              <tr key={c.id} className={`risk-${c.risk.toLowerCase()}`}>
+              <tr key={c.id} className={`risk-${(riskOverrides[c.id] || c.risk).toLowerCase()}`}>
                 <td>
                   <Link to={`/person/${c.id}`} className="case-link">{c.reference}</Link>
                 </td>
                 <td>{c.uprn}</td>
                 <td>{c.name}</td>
-                <td>{c.risk}</td>
+                <td>
+                  <span style={{ fontWeight: riskOverrides[c.id] ? 600 : 400 }}>
+                    {riskOverrides[c.id] ? `${riskOverrides[c.id]} (manual override)` : c.risk}
+                  </span>
+                  <div style={{ marginTop: '0.5em' }}>
+                    <label htmlFor={`risk-override-${c.id}`} style={{ fontWeight: 500, marginRight: '0.7em' }}>Override risk:</label>
+                    <select
+                      id={`risk-override-${c.id}`}
+                      value={riskOverrides[c.id] || c.risk}
+                      onChange={e => handleRiskChange(c.id, e.target.value)}
+                      style={{ padding: '0.4em 1em', borderRadius: '6px', fontSize: '1em', marginRight: '0.7em' }}
+                    >
+                      <option value="High">High</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Low">Low</option>
+                    </select>
+                  </div>
+                </td>
                 <td>
                   {c.completeness === 'high' && (
                     <span style={{ fontSize: '1em' }} title="High data completeness">🟢 High data completeness</span>

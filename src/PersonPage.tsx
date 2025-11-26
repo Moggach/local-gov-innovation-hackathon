@@ -165,6 +165,7 @@ export default function PersonPage() {
 
   const [caseNotes, setCaseNotes] = useState('');
   const [savedNotes, setSavedNotes] = useState('');
+  const [riskOverride, setRiskOverride] = useState('');
 
   if (!person || !details) {
     return (
@@ -186,6 +187,35 @@ export default function PersonPage() {
           <div><dt>Name</dt><dd>{person.name}</dd></div>
           <div><dt>Case Reference</dt><dd>{person.reference}</dd></div>
           <div><dt>UPRN</dt><dd>{person.uprn}</dd></div>
+          <div><dt>Risk Status</dt>
+            <dd>
+              {riskOverride ? (
+                <span style={{ fontWeight: 600 }}>{riskOverride} (manual override)</span>
+              ) : (
+                <span>{person.risk}</span>
+              )}
+              <div style={{ marginTop: '0.5em' }}>
+                <label htmlFor="risk-override" style={{ fontWeight: 500, marginRight: '0.7em' }}>Override risk:</label>
+                <select
+                  id="risk-override"
+                  value={riskOverride || person.risk}
+                  onChange={e => setRiskOverride(e.target.value)}
+                  style={{ padding: '0.4em 1em', borderRadius: '6px', fontSize: '1em', marginRight: '0.7em' }}
+                >
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+                <button
+                  type="button"
+                  onClick={() => setRiskOverride(riskOverride || person.risk)}
+                  style={{ padding: '0.4em 1em', borderRadius: '6px', background: '#234', color: '#fff', fontWeight: 500, fontSize: '1em', border: 'none', cursor: 'pointer' }}
+                >
+                  Save Risk
+                </button>
+              </div>
+            </dd>
+          </div>
           <div><dt>Data Completeness</dt><dd>{person.completeness === 'high' && <span title="High data completeness">🟢 High data completeness</span>}{person.completeness === 'partial' && <span title="Partial data">🟡 Partial data</span>}{person.completeness === 'limited' && <span title="Very limited data (CT only)">🔴 Very limited data (CT only)</span>}</dd></div>
           <div><dt>Date of Birth</dt><dd>{details.dob}</dd></div>
           <div><dt>Address</dt><dd>{details.address}</dd></div>
