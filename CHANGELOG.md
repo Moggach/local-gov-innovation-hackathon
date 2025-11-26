@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.2.0] - 2025-11-26
+
 ### Added
 
 - Initial Vite + React scaffold and counter demo (`src/App.tsx`).
