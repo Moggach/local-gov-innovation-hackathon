@@ -10,10 +10,10 @@ import {
 
 
 const cases = [
-  { id: 1, name: 'John Smith', risk: 'High', details: 'Rent arrears', probability: 90 },
-  { id: 2, name: 'Jane Doe', risk: 'Medium', details: 'Council tax debt', probability: 60 },
-  { id: 3, name: 'Sam Lee', risk: 'Low', details: 'Universal Credit delay', probability: 20 },
-  { id: 4, name: 'Alex Green', risk: 'High', details: 'Eviction notice', probability: 80 },
+  { id: 1, reference: 'CASE-001', uprn: '100010001', name: 'John Smith', risk: 'High', details: 'Rent arrears', probability: 90, completeness: 'high' },
+  { id: 2, reference: 'CASE-002', uprn: '100010002', name: 'Jane Doe', risk: 'Medium', details: 'Council tax debt', probability: 60, completeness: 'partial' },
+  { id: 3, reference: 'CASE-003', uprn: '100010003', name: 'Sam Lee', risk: 'Low', details: 'Universal Credit delay', probability: 20, completeness: 'limited' },
+  { id: 4, reference: 'CASE-004', uprn: '100010004', name: 'Alex Green', risk: 'High', details: 'Eviction notice', probability: 80, completeness: 'high' },
 ];
 
 
@@ -41,8 +41,11 @@ function Dashboard() {
         <table className="cases-table">
           <thead>
             <tr>
+              <th>Case Reference</th>
+              <th>UPRN</th>
               <th>Name</th>
               <th>Risk Status</th>
+              <th>Data Completeness</th>
               <th>Details</th>
               <th>Probability of Homelessness (6mo)</th>
             </tr>
@@ -51,9 +54,22 @@ function Dashboard() {
             {cases.map((c) => (
               <tr key={c.id} className={`risk-${c.risk.toLowerCase()}`}>
                 <td>
-                  <Link to={`/person/${c.id}`} className="case-link">{c.name}</Link>
+                  <Link to={`/person/${c.id}`} className="case-link">{c.reference}</Link>
                 </td>
+                <td>{c.uprn}</td>
+                <td>{c.name}</td>
                 <td>{c.risk}</td>
+                <td>
+                  {c.completeness === 'high' && (
+                    <span style={{ fontSize: '1em' }} title="High data completeness">🟢 High data completeness</span>
+                  )}
+                  {c.completeness === 'partial' && (
+                    <span style={{ fontSize: '1em' }} title="Partial data">🟡 Partial data</span>
+                  )}
+                  {c.completeness === 'limited' && (
+                    <span style={{ fontSize: '1em' }} title="Very limited data (CT only)">🔴 Very limited data (CT only)</span>
+                  )}
+                </td>
                 <td>{c.details}</td>
                 <td>{c.probability}%</td>
               </tr>
