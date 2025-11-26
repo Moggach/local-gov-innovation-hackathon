@@ -18,7 +18,11 @@ const hotspots = [
   { id: 5, name: 'Murston', lat: 51.3390, lng: 0.7430, count: 3 },
 ];
 
+import { useState } from 'react';
+
 function Dashboard() {
+  const [riskFilter, setRiskFilter] = useState('All');
+  const filteredCases = riskFilter === 'All' ? cases : cases.filter(c => c.risk === riskFilter);
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -33,6 +37,20 @@ function Dashboard() {
       </div>
       <section className="cases-section">
         <h2>Cases</h2>
+        <div style={{ marginBottom: '1em' }}>
+          <label htmlFor="risk-filter" style={{ fontWeight: 500, marginRight: '0.7em' }}>Filter by risk:</label>
+          <select
+            id="risk-filter"
+            value={riskFilter}
+            onChange={e => setRiskFilter(e.target.value)}
+            style={{ padding: '0.5em 1em', borderRadius: '6px', fontSize: '1em' }}
+          >
+            <option value="All">All</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
         <table className="cases-table">
           <thead>
             <tr>
@@ -46,7 +64,7 @@ function Dashboard() {
             </tr>
           </thead>
           <tbody>
-            {cases.map((c) => (
+            {filteredCases.map((c) => (
               <tr key={c.id} className={`risk-${c.risk.toLowerCase()}`}>
                 <td>
                   <Link to={`/person/${c.id}`} className="case-link">{c.reference}</Link>
