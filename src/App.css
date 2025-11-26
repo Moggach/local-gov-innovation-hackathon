@@ -33,8 +33,43 @@
   }
 }
 
-.card {
+
+.dashboard {
+  text-align: left;
   padding: 2em;
+}
+
+.cases-section {
+  margin-bottom: 2em;
+}
+
+.cases-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+.cases-table th, .cases-table td {
+  border: 1px solid #ddd;
+  padding: 0.5em 1em;
+}
+.cases-table th {
+  background: #f4f4f4;
+}
+.risk-high {
+  background: #ffe5e5;
+  color: #b30000;
+}
+.risk-medium {
+  background: #fffbe5;
+  color: #b38f00;
+}
+.risk-low {
+  background: #e5ffe5;
+  color: #008f00;
+}
+
+.map-section {
+  margin-top: 2em;
 }
 
 .read-the-docs {
