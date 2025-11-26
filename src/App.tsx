@@ -12,8 +12,8 @@ import { cases } from './data/cases';
 
 const hotspots = [
   { id: 1, name: 'Sittingbourne', lat: 51.3413, lng: 0.7312, count: 12 },
-  { id: 2, name: 'Swale House', lat: 51.3385, lng: 0.7350, count: 7 }, // moved south-east
-  { id: 3, name: 'Milton Regis', lat: 51.3465, lng: 0.7250, count: 5 }, // moved north-west
+  { id: 2, name: 'Swale House', lat: 51.3385, lng: 0.7350, count: 7 }, 
+  { id: 3, name: 'Milton Regis', lat: 51.3465, lng: 0.7250, count: 5 }, 
   { id: 4, name: 'Kemsley', lat: 51.3570, lng: 0.7310, count: 4 },
   { id: 5, name: 'Murston', lat: 51.3390, lng: 0.7430, count: 3 },
 ];

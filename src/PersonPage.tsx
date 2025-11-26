@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { cases }from './data/cases';
 
 type PersonDetails = {
   dob: string;
@@ -9,7 +10,6 @@ type PersonDetails = {
   riskFactors: string[];
 };
 
-// Dummy details for demo purposes
 const detailsById: Record<number, PersonDetails> = {
   1: {
     dob: '12/03/1980',
