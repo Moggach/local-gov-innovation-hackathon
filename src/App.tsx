@@ -1,5 +1,6 @@
 import './App.css';
 import MapHotspots from './MapHotspots';
+import PersonPage from './PersonPage';
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,40 +16,6 @@ const cases = [
   { id: 4, name: 'Alex Green', risk: 'High', details: 'Eviction notice', probability: 80 },
 ];
 
-function PersonPage() {
-  // Template person page
-  return (
-    <div className="person-page" style={{ padding: '3em', maxWidth: '700px', margin: '0 auto', background: '#fff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}>
-      <h2>Person Details</h2>
-      <section style={{ marginBottom: '2em' }}>
-        <h3>Personal Details</h3>
-        <ul>
-          <li><strong>Name:</strong> John Smith</li>
-          <li><strong>Date of Birth:</strong> 12/03/1980</li>
-          <li><strong>Address:</strong> 123 Example Street, Birmingham</li>
-          <li><strong>Contact:</strong> john.smith@email.com, 07123 456789</li>
-        </ul>
-      </section>
-      <section style={{ marginBottom: '2em' }}>
-        <h3>Service Interaction History</h3>
-        <ul>
-          <li>01/06/2025: Contacted Housing Advice Service</li>
-          <li>15/07/2025: Attended Financial Support Workshop</li>
-          <li>02/09/2025: Received Council Tax Debt Letter</li>
-        </ul>
-      </section>
-      <section style={{ marginBottom: '2em' }}>
-        <h3>Risk Factors</h3>
-        <ul>
-          <li>Rent arrears</li>
-          <li>Single adult household</li>
-          <li>Recent job loss</li>
-        </ul>
-      </section>
-      <Link to="/">Back to dashboard</Link>
-    </div>
-  );
-}
 
 const hotspots = [
   { id: 1, name: 'Central Park', lat: 51.5074, lng: -0.1278, count: 12 },
