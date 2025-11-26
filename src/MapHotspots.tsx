@@ -1,6 +1,8 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 import type { LatLngExpression } from 'leaflet';
+import './MapHotspots.css';
 
 interface Hotspot {
   lat: number;
@@ -14,14 +16,21 @@ interface MapHotspotsProps {
 }
 
 export default function MapHotspots({ hotspots }: MapHotspotsProps) {
+  // Create a custom pulsating red dot icon
+  const pulsatingIcon = L.divIcon({
+    className: 'pulsating-dot',
+    iconSize: [18, 18],
+    iconAnchor: [9, 9],
+  });
+
   return (
-  <MapContainer center={[52.4862, -1.8904] as LatLngExpression} zoom={12} style={{ height: '400px', width: '100%' }}>
+  <MapContainer center={[51.5074, -0.1278] as LatLngExpression} zoom={12} style={{ height: '400px', width: '100%' }}>
       <TileLayer
         attribution='&copy; OpenStreetMap contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
       {hotspots.map((h, idx) => (
-        <Marker key={idx} position={[h.lat, h.lng]}>
+        <Marker key={idx} position={[h.lat, h.lng]} icon={pulsatingIcon}>
           <Popup>
             <strong>{h.area}</strong><br />
             {h.count} cases
