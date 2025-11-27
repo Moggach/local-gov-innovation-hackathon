@@ -116,6 +116,8 @@ export function useMcpCases() {
             housing: undefined,
             councilTax: undefined,
             benefits: undefined,
+            risk: (c.risk as Risk),
+            completeness: (c.completeness as Completeness),
           });
         });
 
