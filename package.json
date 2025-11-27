@@ -11,10 +11,10 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage",
-    "smoke:mcp": "bash scripts/smoke_mcp.sh"
+    "smoke:mcp": "bash scripts/smoke_mcp.sh",
+    "validate:mcp": "node scripts/validate_mcp_data.js"
   },
   "dependencies": {
-    "@rollup/rollup-darwin-arm64": "^4.24.0",
     "leaflet": "^1.9.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

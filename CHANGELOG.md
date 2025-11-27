@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - MCP servers now support swapping the data source via `*_DATA_URL` (JSON endpoint) or `*_DATA_PATH` (CSV override) to begin replacing demo CSVs without code changes.
+- Added `data/live/*.csv` sample datasets plus `scripts/start_mcp_servers.sh` and `npm run validate:mcp` to exercise MCP flows end-to-end.
 
 
 ### Backlog to production-grade data integration

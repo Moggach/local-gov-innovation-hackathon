@@ -1,0 +1,11 @@
+uprn,account_name,arrears_amount,last_payment_date,current_recovery_stage
+100010001,John Smith,280.00,2025-10-19,Reminder
+100010002,Jane Doe,0.00,2025-10-05,Current
+100010003,Sam Lee,68.40,2025-10-18,Current
+100010004,Alex Green,540.00,2025-09-30,Summons
+100010005,Maria White,120.00,2025-10-07,Reminder
+100010006,Tom Black,0.00,2025-10-14,Current
+100010007,Lucy Brown,355.50,2025-10-16,Liability Order
+100010008,Peter Gray,79.90,2025-10-08,Current
+100010009,Nina Patel,0.00,2025-10-11,Current
+100010010,Omar Khan,615.25,2025-09-26,Enforcement

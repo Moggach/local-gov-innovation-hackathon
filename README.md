@@ -30,9 +30,16 @@ Each server listens on `/mcp` and expects JSON POST requests that include an `ac
 Use live data by setting source URLs (JSON list) or alternate CSV paths:
 `HOUSING_DATA_URL` / `HOUSING_DATA_PATH`, `COUNCIL_TAX_DATA_URL` / `COUNCIL_TAX_DATA_PATH`, `BENEFITS_DATA_URL` / `BENEFITS_DATA_PATH`.
 
+If no live MCP responses arrive at startup, the UI shows a banner and falls back to the bundled demo dataset.
+
 Quick smoke test (spins up all three servers and exercises health + sample lookups):
 ```bash
 npm run smoke:mcp
+```
+
+Validate MCP connectivity/data (servers must be running):
+```bash
+npm run validate:mcp
 ```
 
 ## How to demo

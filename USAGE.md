@@ -33,6 +33,11 @@ Alternative single command (starts servers, runs health + sample lookups, then e
 npm run smoke:mcp
 ```
 
+Validate connectivity/data while servers are running:
+```bash
+npm run validate:mcp
+```
+
 Environment overrides (if ports/hosts differ):
 - `VITE_HOUSING_MCP_URL`
 - `VITE_CT_MCP_URL`
