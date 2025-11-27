@@ -1,0 +1,11 @@
+uprn,claimant_name,universal_credit_status,last_change_date,sanction_flag,housing_element
+100010001,John Smith,Open,2025-10-10,false,520.00
+100010002,Jane Doe,Open,2025-09-28,false,480.00
+100010003,Sam Lee,Suspended,2025-10-15,true,0.00
+100010004,Alex Green,Open,2025-10-06,false,550.00
+100010005,Maria White,Open,2025-10-05,false,495.00
+100010006,Tom Black,Open,2025-10-14,false,310.50
+100010007,Lucy Brown,Suspended,2025-10-17,true,0.00
+100010008,Peter Gray,Open,2025-10-08,false,430.00
+100010009,Nina Patel,Open,2025-10-11,false,350.00
+100010010,Omar Khan,Open,2025-09-30,false,575.00

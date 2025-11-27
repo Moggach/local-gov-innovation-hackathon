@@ -11,7 +11,8 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage",
-    "smoke:mcp": "bash scripts/smoke_mcp.sh"
+    "smoke:mcp": "bash scripts/smoke_mcp.sh",
+    "validate:mcp": "node scripts/validate_mcp_data.js"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

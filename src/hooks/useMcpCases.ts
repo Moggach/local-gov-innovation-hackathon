@@ -88,10 +88,24 @@ export function useMcpCases() {
       try {
         setLoading(true);
         const [housing, councilTax, benefits] = await Promise.all([
-          fetchJson(HOUSING_URL, { action: 'get_arrears_over', threshold: 0, role: 'housing_officer' }).catch(() => ({ results: [] })),
-          fetchJson(COUNCIL_TAX_URL, { action: 'list_in_recovery', role: 'revenues_officer' }).catch(() => ({ results: [] })),
-          fetchJson(BENEFITS_URL, { action: 'list_sanctioned', role: 'benefits_officer' }).catch(() => ({ results: [] })),
+          fetchJson(HOUSING_URL, { action: 'get_arrears_over', threshold: 0, role: 'housing_officer' }).catch((err) => {
+            console.warn('Housing MCP fetch failed', err);
+            return { results: [] };
+          }),
+          fetchJson(COUNCIL_TAX_URL, { action: 'list_in_recovery', role: 'revenues_officer' }).catch((err) => {
+            console.warn('Council Tax MCP fetch failed', err);
+            return { results: [] };
+          }),
+          fetchJson(BENEFITS_URL, { action: 'list_sanctioned', role: 'benefits_officer' }).catch((err) => {
+            console.warn('Benefits MCP fetch failed', err);
+            return { results: [] };
+          }),
         ]);
+
+        const noLiveData =
+          (housing.results?.length ?? 0) === 0 &&
+          (councilTax.results?.length ?? 0) === 0 &&
+          (benefits.results?.length ?? 0) === 0;
 
         const byUprn = new Map<string, CombinedCase>();
 
@@ -161,8 +175,13 @@ export function useMcpCases() {
         });
 
         if (!cancelled) {
-          setData(combined);
-          setError(null);
+          if (noLiveData) {
+            setData(fallbackCases as CombinedCase[]);
+            setError('No live MCP data received – showing fallback dataset');
+          } else {
+            setData(combined);
+            setError(null);
+          }
         }
       } catch (err: any) {
         if (!cancelled) setError(err.message ?? 'Failed to load MCP data');
