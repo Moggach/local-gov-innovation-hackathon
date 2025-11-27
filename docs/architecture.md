@@ -5,19 +5,19 @@ This demonstrator treats each council data source as its own Model Context Proto
 
 ## Components
 - **AI host (Codex/Claude)** – orchestrates MCP clients and applies skills (redaction, aggregation, formatting).
-- **Housing MCP server** – tenancy + rent arrears data (`mcp_servers/housing_server`).
+- **Housing MCP server** – tenancy + rent arrears (`mcp_servers/housing_server`).
 - **Council Tax MCP server** – balances + recovery stage (`mcp_servers/council_tax_server`).
-- **Benefits MCP server** – Universal Credit status + sanction flag (`mcp_servers/benefits_server`).
-- **Audit / RBAC** – per-server role checks; every request logged to stdout. Roles map to departmental users (e.g. housing_officer, revenues_officer, benefits_officer, analyst, manager).
+- **Benefits MCP server** – UC status + sanction flag (`mcp_servers/benefits_server`).
+- **Audit / RBAC** – per-server role checks; every request logged to stdout. Roles map to departmental users (housing_officer, revenues_officer, benefits_officer, analyst, manager).
 
 ## Data flow
 ```mermaid
 flowchart TD
   subgraph Council Data Systems (MCP servers)
     direction LR
-    H[Housing MCP] -->|CSV lookup| HDB[(data.csv)]
-    C[Council Tax MCP] -->|CSV lookup| CDB[(data.csv)]
-    B[Benefits MCP] -->|CSV lookup| BDB[(data.csv)]
+    H[Housing MCP] -->|CSV/connector| HDB[(data source)]
+    C[Council Tax MCP] -->|CSV/connector| CDB[(data source)]
+    B[Benefits MCP] -->|CSV/connector| BDB[(data source)]
   end
 
   U[Officer] -->|question| AI{{AI host (Codex/Claude)}}
@@ -37,10 +37,12 @@ python mcp_servers/housing_server/server.py --port 7001
 python mcp_servers/council_tax_server/server.py --port 7002
 python mcp_servers/benefits_server/server.py --port 7003
 ```
-Each server listens on `/mcp` and expects JSON POST requests with an `action`, parameters (e.g. `uprn`), and a `role` header/field. See `mcp_servers/README.md` and per-server READMEs for allowed actions.
+Override data source (first backlog item implemented):
+- Use real endpoint JSON: set `HOUSING_DATA_URL`, `COUNCIL_TAX_DATA_URL`, `BENEFITS_DATA_URL` (each should return a JSON list of records with the same fields as the CSVs).
+- Or point to alternative CSVs: `HOUSING_DATA_PATH`, `COUNCIL_TAX_DATA_PATH`, `BENEFITS_DATA_PATH`.
+Defaults fall back to bundled CSVs.
 
 ## Example MCP host config (Codex)
-Add commands to the Codex MCP settings so the agent can launch local servers:
 ```json
 {
   "mcpServers": {
@@ -50,15 +52,15 @@ Add commands to the Codex MCP settings so the agent can launch local servers:
   }
 }
 ```
-If the servers are remote, replace `command` with their URL/endpoints per the MCP transport spec.
+If servers are remote, replace `command` with their URL/endpoints per the MCP transport spec.
 
 ## How the AI should use the tools
-- Use `get_tenancy` for tenancy/arrears detail (needs `uprn`).
-- Use `get_account` or `list_in_recovery` for council tax debt picture.
-- Use `get_claim` or `list_sanctioned` to understand benefit status.
+- `get_tenancy` for tenancy/arrears detail (needs `uprn`).
+- `get_account` or `list_in_recovery` for council tax debt picture.
+- `get_claim` or `list_sanctioned` for benefits status/sanctions.
 - Apply skills to redact PII, aggregate arrears, and surface only role-appropriate insights before responding.
 
 ## Next steps
-- Swap CSVs for live connectors (SQL/API) while keeping MCP contract.
-- Wire the React UI to show “live via MCP” indicators or surface audit IDs from the servers.
+- Swap CSVs for live connectors (now supported via *_DATA_URL/PATH vars).
+- Wire the React UI to show source freshness and audit IDs from MCP responses.
 - Add automated contract tests that hit `/mcp` for each action and role.

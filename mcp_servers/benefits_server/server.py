@@ -18,6 +18,9 @@ import argparse
 import csv
 import json
 import logging
+import os
+import urllib.error
+import urllib.request
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from typing import Dict, List
@@ -28,11 +31,32 @@ DATA_PATH = ROOT / "data.csv"
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(message)s")
 
 
-def load_data() -> List[Dict[str, str]]:
-    if not DATA_PATH.exists():
-        raise FileNotFoundError(f"Missing data file at {DATA_PATH}")
-    with DATA_PATH.open() as f:
+def _load_from_url(url: str) -> List[Dict[str, str]]:
+    try:
+        with urllib.request.urlopen(url) as resp:
+            payload = json.loads(resp.read().decode("utf-8"))
+            if not isinstance(payload, list):
+                raise ValueError("Expected JSON list of records")
+            return payload
+    except (urllib.error.URLError, ValueError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"Failed to fetch benefits data from {url}: {exc}") from exc
+
+
+def _load_from_csv(path: Path) -> List[Dict[str, str]]:
+    if not path.exists():
+        raise FileNotFoundError(f"Missing data file at {path}")
+    with path.open() as f:
         return list(csv.DictReader(f))
+
+
+def load_data() -> List[Dict[str, str]]:
+    url = os.getenv("BENEFITS_DATA_URL")
+    path_override = os.getenv("BENEFITS_DATA_PATH")
+    if url:
+        return _load_from_url(url)
+    if path_override:
+        return _load_from_csv(Path(path_override))
+    return _load_from_csv(DATA_PATH)
 
 
 DATA = load_data()

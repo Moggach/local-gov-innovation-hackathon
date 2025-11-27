@@ -20,6 +20,14 @@ python mcp_servers/council_tax_server/server.py --port 7002
 python mcp_servers/benefits_server/server.py --port 7003
 ```
 
+Using live data instead of bundled CSVs (optional):
+```
+export HOUSING_DATA_URL=https://your/housing/endpoint
+export COUNCIL_TAX_DATA_URL=https://your/ct/endpoint
+export BENEFITS_DATA_URL=https://your/benefits/endpoint
+# or per-source CSV overrides: HOUSING_DATA_PATH=..., etc.
+```
+
 Alternative single command (starts servers, runs health + sample lookups, then exits):
 ```bash
 npm run smoke:mcp

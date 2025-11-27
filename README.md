@@ -27,6 +27,9 @@ python mcp_servers/benefits_server/server.py --port 7003
 
 Each server listens on `/mcp` and expects JSON POST requests that include an `action`, parameters (e.g. `uprn`), and a `role` for RBAC checks. See `mcp_servers/README.md` and the per-server READMEs for accepted actions and roles.
 
+Use live data by setting source URLs (JSON list) or alternate CSV paths:
+`HOUSING_DATA_URL` / `HOUSING_DATA_PATH`, `COUNCIL_TAX_DATA_URL` / `COUNCIL_TAX_DATA_PATH`, `BENEFITS_DATA_URL` / `BENEFITS_DATA_PATH`.
+
 Quick smoke test (spins up all three servers and exercises health + sample lookups):
 ```bash
 npm run smoke:mcp

@@ -6,8 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- MCP servers now support swapping the data source via `*_DATA_URL` (JSON endpoint) or `*_DATA_PATH` (CSV override) to begin replacing demo CSVs without code changes.
+
+
 ### Backlog to production-grade data integration
-- Replace demo CSVs with live connectors to Housing, Council Tax, and Benefits systems (see `/docs/data-availability.md`).
+- Replace demo CSVs with live connectors to Housing, Council Tax, and Benefits systems (see `/docs/data-availability.md` and also `/docs/Integrating MCP for a Homelessness Prevention Demonstrator.md` for background understanding).
 - Move from a plain `role` field to signed identity tokens (OIDC/JWT) and enforce authorization in each MCP server.
 - Add per-request correlation IDs; forward MCP logs to a central audit sink with retention/alerting.
 - Ship contract/integration tests against staging data and add them to CI.
