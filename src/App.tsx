@@ -36,8 +36,12 @@ function Dashboard({ mcp }: DashboardProps) {
     <div className="dashboard">
       <div className="dashboard-header">
         <h1>Welcome to your dashboard</h1>
-        <div style={{ color: '#555', fontSize: '0.95em' }}>
-          Live MCP data • High: {summary.high} • Medium: {summary.medium} • Low: {summary.low}
+        <div className="mcp-summary-bar">
+          <span className="mcp-live-dot" />
+          <span className="mcp-summary-label">Live MCP data</span>
+          <span className="mcp-flash high"><span className="mcp-flash-dot" /> High: {summary.high}</span>
+          <span className="mcp-flash medium"><span className="mcp-flash-dot" /> Medium: {summary.medium}</span>
+          <span className="mcp-flash low"><span className="mcp-flash-dot" /> Low: {summary.low}</span>
         </div>
         <div className="profile-icon" title="Profile">
           <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">

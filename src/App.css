@@ -1,3 +1,72 @@
+/* MCP summary bar dashboard styling */
+.mcp-summary-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+  background: #222e38;
+  color: #fff;
+  font-size: 1.08em;
+  font-weight: 500;
+  border-radius: 12px;
+  padding: 0.7em 1.5em;
+  margin-bottom: 1.2em;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  letter-spacing: 0.02em;
+}
+.mcp-live-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #00e676;
+  margin-right: 0.7em;
+  box-shadow: 0 0 8px #00e676, 0 0 0 0 #00e676;
+  animation: mcp-pulse 1.2s infinite;
+}
+.mcp-summary-label {
+  font-weight: 700;
+  color: #fff;
+  margin-right: 1em;
+}
+.mcp-flash {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.2em 0.7em;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1em;
+}
+.mcp-flash-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.3em;
+  animation: mcp-flash 1s infinite alternate;
+}
+.mcp-flash.high .mcp-flash-dot {
+  background: #ff1744;
+  box-shadow: 0 0 8px #ff1744;
+  animation-delay: 0s;
+}
+.mcp-flash.medium .mcp-flash-dot {
+  background: #ffd600;
+  box-shadow: 0 0 8px #ffd600;
+  animation-delay: 0.3s;
+}
+.mcp-flash.low .mcp-flash-dot {
+  background: #00e676;
+  box-shadow: 0 0 8px #00e676;
+  animation-delay: 0.6s;
+}
+@keyframes mcp-pulse {
+  0% { box-shadow: 0 0 8px #00e676, 0 0 0 0 #00e676; }
+  70% { box-shadow: 0 0 24px #00e676, 0 0 0 12px rgba(0,230,118,0); }
+  100% { box-shadow: 0 0 8px #00e676, 0 0 0 0 #00e676; }
+}
+@keyframes mcp-flash {
+  0% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
 .dashboard-header {
   display: flex;
   align-items: center;
