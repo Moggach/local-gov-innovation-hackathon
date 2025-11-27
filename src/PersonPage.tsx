@@ -10,7 +10,6 @@ type PersonDetails = {
   riskFactors: string[];
 };
 
-// Dummy details for demo purposes
 const detailsById: Record<number, PersonDetails> = {
   1: {
     dob: '12/03/1980',
@@ -173,6 +172,7 @@ export default function PersonPage({ mcp }: Props) {
 
   const [caseNotes, setCaseNotes] = useState('');
   const [savedNotes, setSavedNotes] = useState('');
+  const [riskOverride, setRiskOverride] = useState('');
 
   if (mcp.loading) {
     return (

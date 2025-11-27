@@ -16,7 +16,6 @@ interface MapHotspotsProps {
 }
 
 export default function MapHotspots({ hotspots }: MapHotspotsProps) {
-  // Create a custom pulsating red dot icon
   const pulsatingIcon = L.divIcon({
     className: 'pulsating-dot',
     iconSize: [18, 18],
@@ -33,7 +32,7 @@ export default function MapHotspots({ hotspots }: MapHotspotsProps) {
         <Marker key={idx} position={[h.lat, h.lng]} icon={pulsatingIcon}>
           <Popup>
             <strong>{h.area}</strong><br />
-            {h.count} cases
+            {h.count} high risk cases
           </Popup>
         </Marker>
       ))}
