@@ -14,7 +14,6 @@
     "smoke:mcp": "bash scripts/smoke_mcp.sh"
   },
   "dependencies": {
-    "@rollup/rollup-darwin-arm64": "^4.24.0",
     "leaflet": "^1.9.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
