@@ -1,0 +1,11 @@
+uprn,tenant_name,tenancy_status,arrears_amount,last_payment_date
+100010001,John Smith,Secure,500.00,2025-10-01
+100010002,Jane Doe,Introductory,240.00,2025-09-15
+100010003,Sam Lee,Secure,0.00,2025-10-18
+100010004,Alex Green,Secure,920.00,2025-08-30
+100010005,Maria White,Assured,310.00,2025-10-05
+100010006,Tom Black,Secure,0.00,2025-10-12
+100010007,Lucy Brown,Temporary,780.00,2025-09-28
+100010008,Peter Gray,Private,150.00,2025-10-14
+100010009,Nina Patel,Private,60.00,2025-10-20
+100010010,Omar Khan,Private,1100.00,2025-09-10

@@ -7,20 +7,23 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import { cases } from './data/cases';
-
+import { useState } from 'react';
+import { useMcpCases } from './hooks/useMcpCases';
 
 const hotspots = [
   { id: 1, name: 'Sittingbourne', lat: 51.3413, lng: 0.7312, count: 12 },
-  { id: 2, name: 'Swale House', lat: 51.3385, lng: 0.7350, count: 7 }, 
-  { id: 3, name: 'Milton Regis', lat: 51.3465, lng: 0.7250, count: 5 }, 
+  { id: 2, name: 'Swale House', lat: 51.3385, lng: 0.7350, count: 7 },
+  { id: 3, name: 'Milton Regis', lat: 51.3465, lng: 0.7250, count: 5 },
   { id: 4, name: 'Kemsley', lat: 51.3570, lng: 0.7310, count: 4 },
   { id: 5, name: 'Murston', lat: 51.3390, lng: 0.7430, count: 3 },
 ];
 
-import { useState } from 'react';
+type DashboardProps = {
+  mcp: ReturnType<typeof useMcpCases>;
+};
 
-function Dashboard() {
+function Dashboard({ mcp }: DashboardProps) {
+  const { cases, loading, error, summary } = mcp;
   const [riskFilter, setRiskFilter] = useState('All');
   const [riskOverrides, setRiskOverrides] = useState<Record<number, string>>({});
   const filteredCases = riskFilter === 'All' ? cases : cases.filter(c => (riskOverrides[c.id] || c.risk) === riskFilter);
@@ -32,7 +35,10 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <h1>Welcome to your Lighthouse dashboard</h1>
+        <h1>Welcome to your dashboard</h1>
+        <div style={{ color: '#555', fontSize: '0.95em' }}>
+          Live MCP data • High: {summary.high} • Medium: {summary.medium} • Low: {summary.low}
+        </div>
         <div className="profile-icon" title="Profile">
           <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="40" cy="40" r="40" fill="#e9ecef" />
@@ -57,6 +63,8 @@ function Dashboard() {
             <option value="Low">Low</option>
           </select>
         </div>
+        {loading && <p style={{ marginTop: '0.5em' }}>Loading live MCP data…</p>}
+        {error && <p style={{ marginTop: '0.5em', color: '#b00020' }}>MCP error: {error}</p>}
         <table className="cases-table">
           <thead>
             <tr>
@@ -69,7 +77,7 @@ function Dashboard() {
               <th>Probability of Homelessness (6mo)</th>
             </tr>
           </thead>
-          <tbody>
+            <tbody>
             {filteredCases.map((c) => (
               <tr key={c.id} className={`risk-${(riskOverrides[c.id] || c.risk).toLowerCase()}`}>
                 <td>
@@ -105,6 +113,9 @@ function Dashboard() {
                   {c.completeness === 'limited' && (
                     <span style={{ fontSize: '1em' }} title="Very limited data (CT only)">🔴 Very limited data (CT only)</span>
                   )}
+                  {c.completeness === 'none' && (
+                    <span style={{ fontSize: '1em' }} title="No live sources">⚪ No live sources</span>
+                  )}
                 </td>
                 <td>{c.details}</td>
                 <td>{c.probability}%</td>
@@ -122,11 +133,12 @@ function Dashboard() {
 }
 
 function App() {
+  const mcp = useMcpCases();
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/person/:id" element={<PersonPage />} />
+        <Route path="/" element={<Dashboard mcp={mcp} />} />
+        <Route path="/person/:id" element={<PersonPage mcp={mcp} />} />
       </Routes>
     </Router>
   );
