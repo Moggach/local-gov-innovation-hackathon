@@ -17,9 +17,9 @@ const detailsById: Record<number, PersonDetails> = {
     address: '123 Example Street, Sittingbourne',
     contact: 'john.smith@email.com, 07123 456789',
     history: [
-      '01/06/2025: Contacted Housing Advice Service',
-      '15/07/2025: Attended Financial Support Workshop',
-      '02/09/2025: Received Council Tax Debt Letter',
+  '01/06/2025: Contacted Housing Advice Service\n  └─ Ben Turner (Housing Officer), ben.turner@email.com, 07888 999000',
+  '15/07/2025: Attended Financial Support Workshop\n  └─ Chloe Adams (Debt Advisor), chloe.adams@email.com, 07999 000111',
+  '02/09/2025: Received Council Tax Debt Letter\n  └─ Raj Singh (Council Tax Officer), raj.singh@email.com, 07000 111222',
     ],
     riskFactors: ['Rent arrears', 'Single adult household', 'Recent job loss'],
   },
@@ -28,8 +28,8 @@ const detailsById: Record<number, PersonDetails> = {
     address: '45 Example Road, Faversham',
     contact: 'jane.doe@email.com, 07987 654321',
     history: [
-      '10/05/2025: Contacted Council Tax Team',
-      '20/06/2025: Attended Debt Advice Session',
+  '10/05/2025: Contacted Council Tax Team\n  └─ Ben Turner (Council Tax Officer), ben.turner@email.com, 07888 999000',
+  '20/06/2025: Attended Debt Advice Session\n  └─ Chloe Adams (Debt Advisor), chloe.adams@email.com, 07999 000111',
     ],
     riskFactors: ['Council tax debt', 'Single parent'],
   },
@@ -38,7 +38,7 @@ const detailsById: Record<number, PersonDetails> = {
     address: '78 Example Avenue, Sheerness',
     contact: 'sam.lee@email.com, 07812 345678',
     history: [
-      '05/04/2025: Universal Credit application',
+  '05/04/2025: Universal Credit application\n  └─ Raj Singh (Benefits Caseworker), raj.singh@email.com, 07000 111222',
     ],
     riskFactors: ['Universal Credit delay', 'Young adult'],
   },
@@ -47,8 +47,8 @@ const detailsById: Record<number, PersonDetails> = {
     address: '9 Example Close, Sittingbourne',
     contact: 'alex.green@email.com, 07777 888999',
     history: [
-      '12/09/2025: Received Eviction Notice',
-      '18/09/2025: Contacted Housing Advice Service',
+  '12/09/2025: Received Eviction Notice\n  └─ Ben Turner (Housing Officer), ben.turner@email.com, 07888 999000',
+  '18/09/2025: Contacted Housing Advice Service\n  └─ Chloe Adams (Housing Officer), chloe.adams@email.com, 07999 000111',
     ],
     riskFactors: ['Eviction notice', 'Private renter'],
   },
@@ -57,8 +57,8 @@ const detailsById: Record<number, PersonDetails> = {
     address: '22 High Street, Faversham',
     contact: 'maria.white@email.com, 07111 222333',
     history: [
-      '03/03/2025: Benefit cap applied',
-      '10/04/2025: Requested hardship payment',
+  '03/03/2025: Benefit cap applied\n  └─ Raj Singh (Benefits Caseworker), raj.singh@email.com, 07000 111222',
+  '10/04/2025: Requested hardship payment\n  └─ Ben Turner (Benefits Caseworker), ben.turner@email.com, 07888 999000',
     ],
     riskFactors: ['Benefit cap', 'Single parent'],
   },
@@ -67,7 +67,7 @@ const detailsById: Record<number, PersonDetails> = {
     address: '5 Park Lane, Sheerness',
     contact: 'tom.black@email.com, 07222 333444',
     history: [
-      '15/05/2025: ASB complaint filed',
+  '15/05/2025: ASB complaint filed\n  └─ Chloe Adams (Community Safety Officer), chloe.adams@email.com, 07999 000111',
     ],
     riskFactors: ['ASB complaint', 'Social housing tenant'],
   },
@@ -76,8 +76,8 @@ const detailsById: Record<number, PersonDetails> = {
     address: '33 Mill Road, Sittingbourne',
     contact: 'lucy.brown@email.com, 07333 444555',
     history: [
-      '20/06/2025: Reported domestic violence',
-      '25/06/2025: Moved to temporary accommodation',
+  '20/06/2025: Reported domestic violence\n  └─ Raj Singh (Domestic Violence Support), raj.singh@email.com, 07000 111222',
+  '25/06/2025: Moved to temporary accommodation\n  └─ Ben Turner (Housing Officer), ben.turner@email.com, 07888 999000',
     ],
     riskFactors: ['Domestic violence', 'Family breakdown'],
   },
@@ -86,7 +86,7 @@ const detailsById: Record<number, PersonDetails> = {
     address: '7 Church Street, Faversham',
     contact: 'peter.gray@email.com, 07444 555666',
     history: [
-      '01/07/2025: Rent increase notice',
+  '01/07/2025: Rent increase notice\n  └─ Chloe Adams (Housing Officer), chloe.adams@email.com, 07999 000111',
     ],
     riskFactors: ['Rent increase', 'Private renter'],
   },
@@ -95,7 +95,7 @@ const detailsById: Record<number, PersonDetails> = {
     address: '19 Queen Street, Sheerness',
     contact: 'nina.patel@email.com, 07555 666777',
     history: [
-      '10/08/2025: Council tax reminder sent',
+  '10/08/2025: Council tax reminder sent\n  └─ Raj Singh (Council Tax Officer), raj.singh@email.com, 07000 111222',
     ],
     riskFactors: ['Council tax reminder', 'Young adult'],
   },
@@ -104,8 +104,8 @@ const detailsById: Record<number, PersonDetails> = {
     address: '2 Station Road, Sittingbourne',
     contact: 'omar.khan@email.com, 07666 777888',
     history: [
-      '15/09/2025: Received eviction threat',
-      '20/09/2025: Contacted Housing Advice Service',
+  '15/09/2025: Received eviction threat\n  └─ Ben Turner (Housing Officer), ben.turner@email.com, 07888 999000',
+  '20/09/2025: Contacted Housing Advice Service\n  └─ Chloe Adams (Housing Officer), chloe.adams@email.com, 07999 000111',
     ],
     riskFactors: ['Eviction threat', 'Private renter'],
   },
@@ -114,7 +114,7 @@ const detailsById: Record<number, PersonDetails> = {
     address: '8 Market Street, Faversham',
     contact: 'sophie.evans@email.com, 07777 888999',
     history: [
-      '05/10/2025: Universal Credit sanction',
+  '05/10/2025: Universal Credit sanction\n  └─ Raj Singh (Benefits Caseworker), raj.singh@email.com, 07000 111222',
     ],
     riskFactors: ['Universal Credit sanction', 'Single adult household'],
   },
@@ -123,7 +123,7 @@ const detailsById: Record<number, PersonDetails> = {
     address: '14 Bridge Road, Sheerness',
     contact: 'ben.turner@email.com, 07888 999000',
     history: [
-      '22/07/2025: Missed rent payment',
+  '22/07/2025: Missed rent payment\n  └─ Ben Turner (Housing Officer), ben.turner@email.com, 07888 999000',
     ],
     riskFactors: ['Missed rent payment', 'Young adult'],
   },
@@ -132,7 +132,7 @@ const detailsById: Record<number, PersonDetails> = {
     address: '21 Grove Avenue, Sittingbourne',
     contact: 'chloe.adams@email.com, 07999 000111',
     history: [
-      '30/08/2025: Family breakdown reported',
+  '30/08/2025: Family breakdown reported\n  └─ Chloe Adams (Family Support Worker), chloe.adams@email.com, 07999 000111',
     ],
     riskFactors: ['Family breakdown', 'Single parent'],
   },
@@ -141,7 +141,7 @@ const detailsById: Record<number, PersonDetails> = {
     address: '3 School Lane, Faversham',
     contact: 'raj.singh@email.com, 07000 111222',
     history: [
-      '12/09/2025: Council tax debt letter',
+  '12/09/2025: Council tax debt letter\n  └─ Raj Singh (Council Tax Officer), raj.singh@email.com, 07000 111222',
     ],
     riskFactors: ['Council tax debt', 'Social housing tenant'],
   },
@@ -150,7 +150,7 @@ const detailsById: Record<number, PersonDetails> = {
     address: '17 Park Avenue, Sheerness',
     contact: 'ella.king@email.com, 07123 222333',
     history: [
-      '02/10/2025: Universal Credit delay',
+  '02/10/2025: Universal Credit delay\n  └─ Ben Turner (Benefits Caseworker), ben.turner@email.com, 07888 999000',
     ],
     riskFactors: ['Universal Credit delay', 'Young adult'],
   },
@@ -212,7 +212,39 @@ export default function PersonPage({ mcp }: Props) {
       <section className="person-section">
         <h3 className="person-section-title">Service Interaction History</h3>
         <ul className="person-list">
-          {details.history.map((h: string, idx: number) => <li key={idx}>{h}</li>)}
+          {details.history.map((h: string, idx: number) => {
+            const [main, child] = h.split('\n  └─ ');
+            let childContent: React.ReactNode = child;
+            if (child) {
+              // Extract name, job, email, phone
+              const match = child.match(/^(.*?) \((.*?)\), ([^,]+), (.*)$/);
+              if (match) {
+                const name = match[1];
+                const job = match[2];
+                const email = match[3];
+                const phone = match[4];
+                childContent = (
+                  <>
+                    <span style={{ fontWeight: 500 }}>{name}</span> <span style={{ color: '#666' }}>({job})</span>,{' '}
+                    <a href={`mailto:${email}`} style={{ color: '#234', textDecoration: 'underline' }}>{email}</a>,{' '}
+                    <a href={`tel:${phone.replace(/\s/g, '')}`} style={{ color: '#234', textDecoration: 'underline' }}>{phone}</a>
+                  </>
+                );
+              }
+            }
+            return (
+              <li key={idx} style={{ marginBottom: '0.5em', listStyleType: 'none' }}>
+                {child ? (
+                  <details>
+                    <summary style={{ cursor: 'pointer', fontWeight: 500 }}>{main}</summary>
+                    <div style={{ marginLeft: '1.2em', marginTop: '0.3em', color: '#234', fontSize: '0.98em' }}>{childContent}</div>
+                  </details>
+                ) : (
+                  main
+                )}
+              </li>
+            );
+          })}
         </ul>
       </section>
       <section className="person-section">
