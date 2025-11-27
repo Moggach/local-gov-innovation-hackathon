@@ -172,7 +172,6 @@ export default function PersonPage({ mcp }: Props) {
 
   const [caseNotes, setCaseNotes] = useState('');
   const [savedNotes, setSavedNotes] = useState('');
-  const [riskOverride, setRiskOverride] = useState('');
 
   if (mcp.loading) {
     return (
