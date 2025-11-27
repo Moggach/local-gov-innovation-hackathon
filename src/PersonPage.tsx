@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import type { CombinedCase } from './hooks/useMcpCases';
+import './PersonPage.css';
 
 type PersonDetails = {
   dob: string;
